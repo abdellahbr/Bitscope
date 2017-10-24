@@ -1,4 +1,4 @@
-from Acquisition import *
+from BitScope import *
 
-aqc = Acquisition(300,"A")
-aqc.Infos()
+print("J'aime les poney")
+
