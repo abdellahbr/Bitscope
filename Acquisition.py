@@ -1,4 +1,4 @@
-﻿# -*- coding : utf-8 -*-
+﻿
 from bitlib import *
 
 MODES = ("FAST","DUAL","MIXED","LOGIC","STREAM") # défini les mode de capture
@@ -42,8 +42,4 @@ avec le bitscoepe. elle prend comme attribut de classe :
 
     def Enregistrer():
         """ Méthode permettant d'enregistrer suivant les paramètre de l'instance
-en cour"""
-        
-        
-        
-   
+en cour"""   
