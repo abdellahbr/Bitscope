@@ -5,7 +5,6 @@ MODES = ("FAST","DUAL","MIXED","LOGIC","STREAM") # défini les mode de capture
 SOURCES = ("POD","BNC","X10","X20","X50","ALT","GND") # défini les sources du bitscope
 
 
-nop
 class Acquisition:
     """ Classe Acquisition : elle défini un objet permettant d'acquérir un signal
 avec le bitscoepe. elle prend comme attribut de classe :
@@ -44,7 +43,7 @@ avec le bitscoepe. elle prend comme attribut de classe :
     def Enregistrer():
         """ Méthode permettant d'enregistrer suivant les paramètre de l'instance
 en cour"""
-        
+        
         
         
    
