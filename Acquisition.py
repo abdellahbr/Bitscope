@@ -13,17 +13,18 @@ avec le bitscoepe. elle prend comme attribut de classe :
 
     def __init__(self, NbPoints, Voie):
         print "Recherche de votre matériel ... "
+	BL_Open("",1)
+	self.SELECT = BL_Select(BL_SELECT_DEVICE,0)
         self.MY_SIZE = NbPoints
 	self.DATA = [0]*self.MY_SIZE
-        if Voie != "A" and Voie!= "B":
+        self.MY_MODE =BL_MODE_FAST # d'après la doc le mode fast doit être appeler avant de choisir la voie
+	if Voie != "A" and Voie!= "B":
              print("ERREUR DE SAISIE DE VOIX: ENTRER A OU B") # gestion d'erreur
 	if Voie == "A":
 		self.MY_CHANNEL =0
 	if Voie=="B":
 		self.MY_CHANNEL=1
-        self.CONNECT = BL_Open("",0) # si 1 : connecté
-                                    # si 0 : pas connecté
-	self.MY_MODE = BL_MODE_FAST
+        
 	self.MY_RATE = 1000000
 	BL_Mode(self.MY_MODE)
 	BL_Intro(BL_ZERO)
@@ -40,7 +41,7 @@ avec le bitscoepe. elle prend comme attribut de classe :
 
     def __del__(self):
         """ destructeur de la classe """
-        self.CONNECT = BL_Close()
+        BL_Close()
         
 
     def Infos(self):
