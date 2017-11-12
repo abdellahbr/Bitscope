@@ -20,11 +20,11 @@ avec le bitscoepe. elle prend comme attribut de classe :
         self.TIME= [0]*self.MY_SIZE
 	self.DATA = [0]*self.MY_SIZE
         self.MY_MODE =BL_MODE_FAST # d'après la doc le mode fast doit être appeler avant de choisir la voie
-	if Voie != "A" and Voie!= "B":
+        if Voie != "A" and Voie!= "B" and Voie!="a" and Voie!="b" and Voie!=0 and Voie!=1:
              print("ERREUR DE SAISIE DE VOIX: ENTRER A OU B") # gestion d'erreur
-	if Voie == "A":
+	if Voie == "A" or Voie=="a" or Voie==0:
 		self.MY_CHANNEL =0
-	if Voie=="B":
+	if Voie=="B" or Voie=="b" or Voie==1:
 		self.MY_CHANNEL=1
         
         self.MY_RATE = Rate
@@ -80,7 +80,10 @@ en cour"""
         BL_Enable(TRUE) 
 
 	BL_Trace()
-	self.DATA = BL_Acquire()
+        if BL_State()!= BL_STATE_DONE:
+            print "ERREUR --> Le Bitscope n'est pas près pour l'acquisition"
+        else:
+	    self.DATA = BL_Acquire()
 
         # Affectation des valeurs du temps dans le tableau TIME
         time = 0.
@@ -148,4 +151,37 @@ en cour"""
         print string
         #print "" .join(["%f\t" % self.DATA[i] for i in range (len(self.DATA))])
         print "\n------------------------------------"
+
+    # Mutateur du mode d'acquisition
+
+    def setMode(self,NewMode):
+        if NewMode!="FAST" and NewMode!="DUAL" and NewMode!="MIXED" and NewMode!="LOGIC" and NewMode!="STREAM" and NewMode!="fast" and NewMode!="dual" and NewMode!="mixed" and NewMode!="logic" and NewMode!="stream":
+            print "ERREUR ---> mode innexistant ou non pris en charge"
+        else:
+            if NewMode=="FAST" or NewMode=="fast":
+                self.MY_MODE = BL_MODE_FAST
+            if NewMode=="DUAL" or NewMode=="dual":
+                self.MY_MODE = BL_MODE_DUAL
+            if NewMode=="MIXED" or NewMode=="mixed":
+                self.MY_MODE = BL_MODE_MIXED
+            if NewMode=="LOGIC" or NewMode=="logic":
+                self.MY_MODE = BL_MODE_LOGIC
+            if NewMode=="STREAM" or NewMode=="stream":
+                self.MY_MODE = BL_MODE_STREAM
+
+
+    # Mutateur de la voie d'acquisition
+    def setVoie(self,NewVoie):
+        if NewVoie != "A" and NewVoie!= "B" and NewVoie!="a" and NewVoie!="b" and NewVoie !=0 and NewVoie!=1:
+             print("ERREUR DE SAISIE DE VOIX: ENTRER A OU B") # gestion d'erreur
+	if NewVoie == "A" or NewVoie == "a" or NewVoie == 0 :
+		self.MY_CHANNEL =0
+	if NewVoie=="B" or NewVoie=="b" or NewVoie==1:
+		self.MY_CHANNEL=1
+
+    
+    # Remise à zéro de l'acuisition (donnée et flag)
+    def RAZ(self):
+        self.DATA = [0]*self.MY_SIZE
+        self.TIME = [0]*self.MY_SIZE
 
