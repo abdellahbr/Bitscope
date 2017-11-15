@@ -31,7 +31,8 @@ avec le bitscoepe. elle prend comme attribut de classe :
         
         # on récupère le temps d'acquisition pour l'objet courant
         self.MY_DURATION=BL_Time()
-        print "Matériel détecté ! (%s)" %BL_Name(0)
+        print "Matériel détecté ! (%s)\n" %BL_Name(0)
+
 
     def __del__(self):
         """ destructeur de la classe """
@@ -106,7 +107,7 @@ en cour"""
             while len(ToAdd) <9:       
                 ToAdd = ToAdd + "0"
             string = string + ToAdd + "\t"
-            if (i+1)%10==0:
+            if (i+1)%5==0:
                 print string
                 string = ""
         print string
@@ -145,7 +146,7 @@ en cour"""
             while len(ToAdd) <9:       
                 ToAdd = ToAdd + "0"
             string = string + ToAdd + "\t"
-            if (i+1)%10==0:
+            if (i+1)%5==0:
                 print string
                 string = ""
         print string
