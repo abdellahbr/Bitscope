@@ -3,9 +3,10 @@ from pylab import*
 
 Acq = Acquisition("A",5000)
 Acq.setRate(1000000)
-Acq.setMode("DUAL")
+Acq.setMode("FAST")
 Acq.Enregistrer()
 
 Acq.Infos()
-plt.plot(Acq.TIME, Acq.DATA)
-plt.show()
+plot(Acq.TIME, Acq.DATA)
+show()
+

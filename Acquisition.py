@@ -1,4 +1,5 @@
-﻿
+# -*- coding: utf-8 -*-
+
 from bitlib import *
 
 MODES = ("FAST","DUAL","MIXED","LOGIC","STREAM") # défini les mode de capture
@@ -20,11 +21,11 @@ avec le bitscoepe. elle prend comme attribut de classe :
         self.TIME= [0]*self.MY_SIZE
 	self.DATA = [0]*self.MY_SIZE
         self.MY_MODE =BL_MODE_FAST # d'après la doc le mode fast doit être appeler avant de choisir la voie
-        if Voie != "A" and Voie!= "B" and Voie!="a" and Voie!="b" and Voie!=0 and Voie!=1:
+        if Voie.upper() != "A" and Voie.upper()!= "B" and Voie!=0 and Voie!=1:
              print("ERREUR DE SAISIE DE VOIX: ENTRER A OU B") # gestion d'erreur
-	if Voie == "A" or Voie=="a" or Voie==0:
+	if Voie.upper() == "A" or Voie==0:
 		self.MY_CHANNEL =0
-	if Voie=="B" or Voie=="b" or Voie==1:
+	if Voie.upper()=="B" or Voie==1:
 		self.MY_CHANNEL=1
         
         self.MY_RATE = Rate
@@ -156,18 +157,19 @@ en cour"""
     # Mutateur du mode d'acquisition
 
     def setMode(self,NewMode):
-        if NewMode!="FAST" and NewMode!="DUAL" and NewMode!="MIXED" and NewMode!="LOGIC" and NewMode!="STREAM" and NewMode!="fast" and NewMode!="dual" and NewMode!="mixed" and NewMode!="logic" and NewMode!="stream":
+        NewMode=NewMode.upper()
+        if NewMode!="FAST" and NewMode!="DUAL" and NewMode!="MIXED" and NewMode!="LOGIC" and NewMode!="STREAM":
             print "ERREUR ---> mode innexistant ou non pris en charge"
         else:
-            if NewMode=="FAST" or NewMode=="fast":
+            if NewMode=="FAST":
                 self.MY_MODE = BL_MODE_FAST
-            if NewMode=="DUAL" or NewMode=="dual":
+            if NewMode=="DUAL":
                 self.MY_MODE = BL_MODE_DUAL
-            if NewMode=="MIXED" or NewMode=="mixed":
+            if NewMode=="MIXED":
                 self.MY_MODE = BL_MODE_MIXED
-            if NewMode=="LOGIC" or NewMode=="logic":
+            if NewMode=="LOGIC":
                 self.MY_MODE = BL_MODE_LOGIC
-            if NewMode=="STREAM" or NewMode=="stream":
+            if NewMode=="STREAM":
                 self.MY_MODE = BL_MODE_STREAM
 
 
@@ -186,3 +188,8 @@ en cour"""
         self.DATA = [0]*self.MY_SIZE
         self.TIME = [0]*self.MY_SIZE
 
+
+    """ Fonction d'aide permet d'avoir tout les infos sur le bitscope """
+    def Help(info = "g"):
+        if 
+        
