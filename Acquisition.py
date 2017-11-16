@@ -189,7 +189,32 @@ en cour"""
         self.TIME = [0]*self.MY_SIZE
 
 
+###############################################################################
+
     """ Fonction d'aide permet d'avoir tout les infos sur le bitscope """
-    def Help(info = "g"):
-        if 
-        
+    def Help(self,info = "g"):
+        for i in range(len(info)):
+            self.sub_Help(str(info[i]))
+            
+            
+    def sub_Help(self,Cara):
+        if Cara=="g":
+            message = "La fonction d'aide prend plusieurs paramètre qu'il convient de passer en paramètre. "
+            message = message + "Ces paramètres sont des lettres sensible à la casse. \n\n"
+            message = message + "\"d\"\t-->\t Extrait de la dataSheet du btscope\n\n"
+            message = message + "\"\""
+            print message
+
+        if Cara =="d":
+            message = "Valeur critique extraite de la datasheet à ne pas dépasser :\n\n"
+            message = message + "Fréquence d'échantillonnage max : 20 MHz\n"
+            message = message + "Tension d'entrée max : 5 V\n"
+            message = message + "Mémoire tampon : 12 Ko\n"
+            message = message + "Impédence des entrées analogique : 1 MOhm (+- 1%) , 1pF\n"
+            message = message + "Impédance des entrées logiques : 100 KOhm (+- 1%), 10pF\n"
+            message = message + "Niveau des entrées logiques : 3.3 / 5 V CMOS (compatible TTL)\n"
+            message = message + "Sensibilité maximal : 5 mV (<1 MHz)\n"
+            message = message + "Sensibilité entré analogique : 20 mV (bande complète)\n"
+            message = message + "Fréquence d'affichage : 50 Hz(20 ms)\n"
+            message = message + "\n"
+            print message
