@@ -4,6 +4,7 @@ from bitlib import *
 
 MODES = ("FAST","DUAL","MIXED","LOGIC","STREAM") # défini les mode de capture
 SOURCES = ("POD","BNC","X10","X20","X50","ALT","GND") # défini les sources du bitscope
+METHODES = ("setDuration", "setVoie", "setMode", "Enregistrer", "Infos", "DisplayAcq", "DisplayTime")
 TRUE = 1 
 
 class Acquisition:
@@ -193,9 +194,12 @@ en cour"""
 
     """ Fonction d'aide permet d'avoir tout les infos sur le bitscope """
     def Help(self,info = "0"):
-        for i in range(len(info)):
-            self.sub_Help(str(info[i]))
-            
+        if (info in METHODES) == True:
+            self.sub_Help(info)
+        else:
+            for i in range(len(info)):
+                self.sub_Help(str(info[i]))
+
             
     def sub_Help(self,Cara):
         if Cara=="0":
