@@ -3,10 +3,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 import sys
+import threading
 
-class TR_Acquisition
-	
-	
+TRUE = 1
+
+class TR_Acquisition:
+
     # Constructeur
     def __init__(self, Voie,NbPoints,Rate): 
 
@@ -30,7 +32,7 @@ class TR_Acquisition
 
     # Obtenir donnees
 
-    def Acquisition(self)
+    def Acquisition(self):
 
         BL_Mode(self.MY_MODE)
 	BL_Intro(BL_ZERO)
@@ -46,8 +48,8 @@ class TR_Acquisition
         BL_Trace()
         self.DATA = BL_Acquire()
 
-    # Boucle Acquisition temps réel
-    def tr_plot() 
+    # Boucle Acquisition temps reel
+    def tr_plot(self):
 
         if BL_State()== BL_STATE_DONE:
             
@@ -79,13 +81,13 @@ class TR_Acquisition
                 except KeyboardInterrupt:
                     break
         # Gestion de multithreading
-        def run(self)
-            acquisition_thread = threading.Thread(target = self.tr_plot)
-            acquisition_thread.daemon = True
-            acquisition_thread.start()
-            print 'Acquisition en cours...'
-            # Arreter thread
-            while True:
-                if raw_input() == 'disarm':
-                    print 'Acquisition terrminee'
-                    sys.exit()
+    def run(self):
+        acquisition_thread = threading.Thread(target = self.tr_plot)
+        acquisition_thread.daemon = True
+        acquisition_thread.start()
+        print 'Acquisition en cours...'
+        # Arreter thread
+        while True:
+            if raw_input() == 'stop':
+                print 'Acquisition terrminee'
+                sys.exit()
