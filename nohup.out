@@ -1,0 +1,42 @@
+Recherche de votre materiel ... 
+Materiel detecte ! (USB:/dev/ttyUSB0)
+Traceback (most recent call last):
+  File "main.py", line 5, in <module>
+    AcqTR.run()
+  File "/home/pi/Bitscope/TR_Acquisition.py", line 92, in run
+    acquisition_thread.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 145, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 325, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 145, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 325, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 145, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Recherche de votre materiel ... 
+Materiel detecte ! (USB:/dev/ttyUSB0)
