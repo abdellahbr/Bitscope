@@ -203,22 +203,18 @@ en cour"""
             
     def sub_Help(self,Cara):
         if Cara=="0":
-            message = "La fonction d'aide vous permet d'obtenir des
-informations sur l'utilisation de votre bitscope en ligne de commande. Il vous
-suffit de passer en paramètre de la fonction Help une chaine de caractère
-contenant l'un ou un ensemble concaténé des caratère suivant :\n\n"
+            message = "La fonction d'aide vous permet d'obtenir des informations sur l 'utilisation de votre "
+            message = message + "bitscope en ligne de commande. Il vous suffit de passer en paramètre de la "
+            message = message + "fonction Help une chaine de caractère contenant l'un ou un ensemble concaténé des caratères suivants :\n\n"
             message = message + "\"d\"\t-->\t Totalité de la dataSheet du btscope\n\n"
             message = message + "\"i\"\t--> Documentation sur les Inputs\n\n"
             message = message + "\"a\"\t--> Documentation sur les Acquisitions\n\n"
             message = message + "\"t\"\t--> Documentation sur les triggers\n\n"
-            message = message + "\"g\"\t--> Documentation général sur le
-bitscope\n\n"
-            message = message + "Pour obtenir de l'aide sur une méthode taper
-son nom en paramètre de la fonction help. LA liste des méthodes est données si
-dessous :\n\n"
-            message = message + "SetMode, setVoie, setDuration, Enregistrer,
-DisplayAcq, DisplayTime, Infos"
-             print message
+            message = message + "\"g\"\t--> Documentation général sur le bitscope\n\n"
+            message = message + "Pour obtenir de l'aide sur une méthode taper "
+            message = message + "son nom en paramètre de la fonction help. LA liste des méthodes est données si dessous :\n\n"
+            message = message + "SetMode, setVoie, setDuration, Enregistrer, DisplayAcq, DisplayTime, Infos"
+            print message
 
         if Cara =="d":
             self.sub_Help("g")
@@ -240,10 +236,8 @@ DisplayAcq, DisplayTime, Infos"
             message = message + "Input Sensing : Yes\n"
             message = message + "Adjustable Switching : Yes (D6 and D7)\n"
             message = message + "Analog Input Impedence : 1 MOhms +- 1%, 10 pF\n"
-            message = message + "Logic Input Impedence : 100 KOhms +- 1%, 10 pF
-(logic)\n"
-            message = message + "Logic Input levels : 3.3/5 V CMOS (TTL
-Compatible)\n"
+            message = message + "Logic Input Impedence : 100 KOhms +- 1%, 10 pF (logic)\n"
+            message = message + "Logic Input levels : 3.3/5 V CMOS (TTL Compatible)\n"
             print message
 
         if Cara == "a":
@@ -253,30 +247,24 @@ Compatible)\n"
             message = message + "Macro High Resolution : Yes\n"
             message = message + "Sub-Sampled Analog : No\n"
             message = message + "Protocol Streaming : No\n"
-            message = message + "Digital Sample Rate (Max) : 40 MSps (per
-frame)\n"
-            message = message + "Analog Sample Rate (Max) : 20 MSps (per
-frame)\n"
+            message = message + "Digital Sample Rate (Max) : 40 MSps (per frame)\n"
+            message = message + "Analog Sample Rate (Max) : 20 MSps (per frame)\n"
             message = message + "Streaming Rate (Max) : 200 KSps (continous)\n"
             message = message + "Native Resolution : 8/12 bits(switchable)\n"
             message = message + "12 ENOB (<1 MHz)\n"
             message = message + "Display Frame Rate : 50Hz (20 ms)\n"
-            message = message + "Capture Buffers : 12 KS, 6 KS x 2, 6 KS x 9 or
-3 KS x 2 + 6 KS x 8\n"
+            message = message + "Capture Buffers : 12 KS, 6 KS x 2, 6 KS x 9 or 3 KS x 2 + 6 KS x 8\n"
             message = message + "Timerbase Range : 1us/Div ~ 100 ms/Div\n"
             message = message + "Timebase Accuracy : 0.01% (100 ppm)\n"
             print message
 
         if Cara =="t":
             message = "---------- TRIGGERS ----------\n\n"
-            message = message + "Trigger Modes : Edge (Rise/Fall), Level/State
-& Logic\n"
+            message = message + "Trigger Modes : Edge (Rise/Fall), Level/State & Logic\n"
             message = message + "Hysteresis / Sensitivity : +- 2%\n"
             message = message + "Trigger Filter : Fast, Normal & Delay\n"
-            message = message + "Cross-Trigger Ops : Logic trigger analog &
-vice versa\n"
-            message = message + "trigger Delay Timebase : 100 us to 10 s
-(programmable)\n"
+            message = message + "Cross-Trigger Ops : Logic trigger analog & vice versa\n"
+            message = message + "trigger Delay Timebase : 100 us to 10 s (programmable)\n"
             message = message + "Trigger Hold-Off : 1 ms ~ 100 ms\n"
             print message
 
@@ -290,27 +278,21 @@ vice versa\n"
             print message
 
         if Cara == "setMode":
-            message = "Permet la selection du mode d'aqcuisition de la sonde
-:\n\n"
+            message = "Permet la selection du mode d'aqcuisition de la sonde :\n\n"
             message = message + "FAST --> Acquisition rapide d'une seul voie\n"
-            message = message + "DUAL --> Acquisition des deux voie
-simultanément\n"
-            message = message + "MIXED --> Acquisition de sur voie analogique
-et logique simultanément\n"
+            message = message + "DUAL --> Acquisition des deux voie simultanément\n"
+            message = message + "MIXED --> Acquisition de sur voie analogique et logique simultanément\n"
             message = message + "LOGIC --> Acquisition sur les voie logiques\n"
-            message = message + "STREAM --> \n"
-            message = message + "\nExemple d'utilisation :
-Acquisition.setMode(\"FAST\")"
+            message = message + "STREAM --> Mode pour l'utilisation du logiciel de visualisation fourni avec le Bitscope\n"
+            message = message + "\nExemple d'utilisation : Acquisition.setMode(\"FAST\")"
             print message
 
         if Cara == "setDuration":
-            message = "Permet de réglé la durée d'acquisition en seconde. le changement du temps d'acquisition induit un changement
-automatique du nombre de point (conservation de la fréquence d'échantillonnage)\n"
+            message = "Permet de réglé la durée d'acquisition en seconde. le changement du temps d'acquisition induit un changement automatique du nombre de point (conservation de la fréquence d'échantillonnage)\n"
             print message
 
         if Cara == "setVoie":
-            message = "Permet de choisir la voie d'acquisition si l'aqcuisition n'est pas une acquisition sur voie
-logique.\n"
+            message = "Permet de choisir la voie d'acquisition si l'aqcuisition n'est pas une acquisition sur voie logique.\n"
             message = message + "\nExemple d'utilisation : Acquisition.setVoie(\"A\")"
             print message
 
@@ -319,16 +301,13 @@ logique.\n"
             print message
 
         if Cara == "DisplayAcq":
-            message = "Permet d'afficher le tableau des valeurs acquise dans la console. Si l'acquisition n'a pas été
-lancée avec Enregistrer, le tableau est initialement rempli de 0\n"
+            message = "Permet d'afficher le tableau des valeurs acquise dans la console. Si l'acquisition n'a pas été lancée avec Enregistrer, le tableau est initialement rempli de 0\n"
             print message
 
         if Cara == "DisplayTime":
-            message = "Permet d'afficher le tableau des temps d'acquisition dans la console. Si l'acquisition n'a pas
-été lancée avec Enregistrer, le tableau est initialement rempli de 0\n"
+            message = "Permet d'afficher le tableau des temps d'acquisition dans la console. Si l'acquisition n'a pas été lancée avec Enregistrer, le tableau est initialement rempli de 0\n"
             print message
 
         if Cara == "Infos":
-            message = "Permet d'afficher les informations de configuration de votre Bitscope et de l'acquisition en
-cours\n"
+            message = "Permet d'afficher les informations de configuration de votre Bitscope et de l'acquisition en cours\n"
             print message
