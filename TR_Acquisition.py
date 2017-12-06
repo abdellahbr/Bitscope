@@ -4,9 +4,8 @@ import numpy as np
 import time
 import sys
 import threading
-
+from multiprocessing import Process
 TRUE = 1
-
 class TR_Acquisition:
 
     # Constructeur
@@ -30,6 +29,8 @@ class TR_Acquisition:
 
         BL_Close()
 
+    def setSize(self,NbPoints):
+        self.MY_SIZE = NbPoints
     # Obtenir donnees
 
     def Acquisition(self):
@@ -50,15 +51,16 @@ class TR_Acquisition:
 
     # Boucle Acquisition temps reel
     def tr_plot(self):
-
         if BL_State()== BL_STATE_DONE:
             
             # Definition du graphe
             fig = plt.figure()
             ax = fig.add_subplot(111)
             # Premiere Acquisition
+            val = self.MY_SIZE * 2000
+            self.setSize(val)
             self.Acquisition()
-            x = np.arange(-self.MY_SIZE,0)
+            x = np.arange(-val,0)
             y = self.DATA
             li, = ax.plot(x, y)
             ax.relim() 
@@ -70,18 +72,21 @@ class TR_Acquisition:
             while True:
                 try:
                     if BL_State()== BL_STATE_DONE:
-                        self.Acquisition
+                        self.setSize(self.MY_SIZE)
+                        self.Acquisition()
                         y[:-self.MY_SIZE] = y[self.MY_SIZE:]
                         y[-self.MY_SIZE:] = self.DATA
 
                         # Inserer nouvelles donnees
                         li.set_ydata(y)
+                        ax.relim() 
+                        ax.autoscale_view(True,True,True)
                         fig.canvas.draw()
-                        time.sleep(0.01)
                 except KeyboardInterrupt:
                     break
         # Gestion de multithreading
     def run(self):
+        #acquisition_thread = Process(target = self.tr_plot)
         acquisition_thread = threading.Thread(target = self.tr_plot)
         acquisition_thread.daemon = True
         acquisition_thread.start()
@@ -90,4 +95,5 @@ class TR_Acquisition:
         while True:
             if raw_input() == 'stop':
                 print 'Acquisition terrminee'
-                sys.exit()
+                acquisition_thread.terminate()
+                
