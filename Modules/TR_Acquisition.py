@@ -5,22 +5,24 @@ import time
 import sys
 import threading
 from multiprocessing import Process
+from pylab import*
 TRUE = 1
+
 class TR_Acquisition:
 
     # Constructeur
     def __init__(self, Voie,NbPoints,Rate): 
 
         print "Recherche de votre materiel ... "
-	BL_Open("",1)
-	self.SELECT = BL_Select(BL_SELECT_DEVICE,0)
+        BL_Open("",1)
+        self.SELECT = BL_Select(BL_SELECT_DEVICE,0)
         self.MY_SIZE = NbPoints
         self.MY_MODE = BL_MODE_FAST
         self.DATA = [0]*self.MY_SIZE
-	if Voie == "A" or Voie=="a" or Voie==0:
+        if Voie == "A" or Voie=="a" or Voie==0:
             self.MY_CHANNEL =0
-	if Voie=="B" or Voie=="b" or Voie==1:
-	    self.MY_CHANNEL=1
+        if Voie=="B" or Voie=="b" or Voie==1:
+            self.MY_CHANNEL=1
         self.MY_RATE = Rate
         print "Materiel detecte ! (%s)" %BL_Name(0)
 
@@ -36,15 +38,15 @@ class TR_Acquisition:
     def Acquisition(self):
 
         BL_Mode(self.MY_MODE)
-	BL_Intro(BL_ZERO)
-	BL_Delay(BL_ZERO)
-	BL_Rate(self.MY_RATE)
-	BL_Size(self.MY_SIZE)
-	BL_Select(self.MY_CHANNEL, self.MY_SIZE)
-	BL_Trigger(BL_ZERO,BL_TRIG_RISE)
-	BL_Select(BL_SELECT_SOURCE,BL_SOURCE_POD)
-	BL_Range(BL_Count(BL_COUNT_RANGE))
-	BL_Offset(BL_ZERO)
+        BL_Intro(BL_ZERO)
+        BL_Delay(BL_ZERO)
+        BL_Rate(self.MY_RATE)
+        BL_Size(self.MY_SIZE)
+        BL_Select(self.MY_CHANNEL, self.MY_SIZE)
+        BL_Trigger(BL_ZERO,BL_TRIG_RISE)
+        BL_Select(BL_SELECT_SOURCE,BL_SOURCE_POD)
+        BL_Range(BL_Count(BL_COUNT_RANGE))
+        BL_Offset(BL_ZERO)
         BL_Enable(TRUE)
         BL_Trace()
         self.DATA = BL_Acquire()
@@ -52,7 +54,6 @@ class TR_Acquisition:
     # Boucle Acquisition temps reel
     def tr_plot(self):
         if BL_State()== BL_STATE_DONE:
-            
             # Definition du graphe
             fig = plt.figure()
             ax = fig.add_subplot(111)
@@ -96,4 +97,7 @@ class TR_Acquisition:
             if raw_input() == 'stop':
                 print 'Acquisition terrminee'
                 acquisition_thread.terminate()
+                break
+                
+                
                 
