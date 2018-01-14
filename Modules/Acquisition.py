@@ -204,9 +204,9 @@ en cour"""
     def sub_Help(self,Cara):
         if Cara=="0":
             message = "La fonction d'aide vous permet d'obtenir des informations sur l 'utilisation de votre "
-            message = message + "bitscope en ligne de commande. Il vous suffit de passer en paramètre de la "
+            message = message + "bitscope en ligne de commande. Il vous suffit de passer en paramètre la "
             message = message + "fonction Help une chaine de caractère contenant l'un ou un ensemble concaténé des caratères suivants :\n\n"
-            message = message + "\"d\"\t-->\t Totalité de la dataSheet du btscope\n\n"
+            message = message + "\"d\"\t-->\t Totalité de la dataSheet du bitscope\n\n"
             message = message + "\"i\"\t--> Documentation sur les Inputs\n\n"
             message = message + "\"a\"\t--> Documentation sur les Acquisitions\n\n"
             message = message + "\"t\"\t--> Documentation sur les triggers\n\n"
