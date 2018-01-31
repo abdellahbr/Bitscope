@@ -11,8 +11,8 @@ TRUE = 1
 class TR_Acquisition:
 
     # Constructeur
-    def __init__(self, Voie,NbPoints,Rate): 
-
+    def __init__(self, Voie,Rate): 
+	NbPoints = 1
         print "Recherche de votre materiel ... "
         BL_Open("",1)
         self.SELECT = BL_Select(BL_SELECT_DEVICE,0)
@@ -70,6 +70,7 @@ class TR_Acquisition:
             plt.show(block=False)
 
             # Boucle temps reel
+
             while True:
                 try:
                     if BL_State()== BL_STATE_DONE:
@@ -77,7 +78,6 @@ class TR_Acquisition:
                         self.Acquisition()
                         y[:-self.MY_SIZE] = y[self.MY_SIZE:]
                         y[-self.MY_SIZE:] = self.DATA
-
                         # Inserer nouvelles donnees
                         li.set_ydata(y)
                         ax.relim() 
@@ -89,15 +89,15 @@ class TR_Acquisition:
     def run(self):
         #acquisition_thread = Process(target = self.tr_plot)
         acquisition_thread = threading.Thread(target = self.tr_plot)
-        acquisition_thread.daemon = True
+        #acquisition_thread.daemon = True
         acquisition_thread.start()
         print 'Acquisition en cours...'
         # Arreter thread
         while True:
             if raw_input() == 'stop':
                 print 'Acquisition terrminee'
-                acquisition_thread.terminate()
                 break
                 
                 
-                
+
+              

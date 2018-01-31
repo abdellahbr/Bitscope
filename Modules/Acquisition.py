@@ -190,6 +190,12 @@ en cour"""
         self.TIME = [0]*self.MY_SIZE
 
 
+    def Save(self,nom):
+        fichier = open(nom +".txt","a")
+        for i in range (len(self.MY_SIZE)):
+            fichier.write (self.TIME[i] +"\t" + self.DATA[i] + "\n")
+        fichier.close()
+
 ###############################################################################
 
     """ Fonction d'aide permet d'avoir tout les infos sur le bitscope """
